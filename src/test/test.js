@@ -4,8 +4,8 @@ import 'react-spotify-auth/dist/index.css' // if using the included styles
 
 
 const Test = props => {
-  var client_id = '8211b083dda34f61a2f0dd2d8f4d70f6'; // Your client id
-  var client_secret = '2a24c1a3896141a0b1a09304b7f1a550'; // Your secret
+  var client_id = ''; // Your client id
+  var client_secret = ''; // Your secret
   var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 
