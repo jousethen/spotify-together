@@ -24,29 +24,29 @@ yarn-debug.log*
 yarn-error.log*
 
 # backend
-/server/.bundle
+/spotify-together-api/.bundle
 
 # Ignore the default SQLite database.
-/server/db/*.sqlite3
-/server/db/*.sqlite3-*
+/spotify-together-api/db/*.sqlite3
+/spotify-together-api/db/*.sqlite3-*
 
-/server/config/database.yml
+/spotify-together-api/config/database.yml
 # Ignore all logfiles and tempfiles.
-/server/serverlog/*
-/server/tmp/*
-!/server/log/.keep
-!/server/tmp/.keep
+/spotify-together-api/spotify-together-apilog/*
+/spotify-together-api/tmp/*
+!/spotify-together-api/log/.keep
+!/spotify-together-api/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-/server/tmp/pids/*
-!/server/tmp/pids/
-!/server/tmp/pids/.keep
+/spotify-together-api/tmp/pids/*
+!/spotify-together-api/tmp/pids/
+!/spotify-together-api/tmp/pids/.keep
 
 # Ignore uploaded files in development.
-/server/storage/*
-!/server/storage/.keep
-/server/.byebug_history
+/spotify-together-api/storage/*
+!/spotify-together-api/storage/.keep
+/spotify-together-api/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/server/config/master.key
+/spotify-together-api/config/master.key
 
