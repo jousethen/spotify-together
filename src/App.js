@@ -17,7 +17,7 @@ class App extends Component {
     return (
       < div className="App" >
         {
-          Boolean(Cookies.get("spotifyAuthToken"))
+          Boolean(localStorage.getItem("spotifyAuthToken"))
             ? <div>You are logged in</div> :
             <div className="Login">
               <Image src="./images/spotify-2-logo-png-transparent.png" roundedCircle width={100} />
@@ -29,7 +29,7 @@ class App extends Component {
                 noLogo={true}
                 clientID={client_id}
                 scopes={[Scopes.userReadPrivate, 'user-read-email', 'streaming', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
-                onAccessToken={(token) => Cookies.set("", token)}
+                onAccessToken={(token) => localStorage.setItem("spotifyAuthToken", token)}
               />
             </div>
         }
