@@ -24,4 +24,28 @@ yarn-debug.log*
 yarn-error.log*
 
 # backend
-/server/config
+/server/.bundle
+
+# Ignore the default SQLite database.
+/server/db/*.sqlite3
+/server/db/*.sqlite3-*
+
+/server/config/database.yml
+# Ignore all logfiles and tempfiles.
+/server/serverlog/*
+/server/tmp/*
+!/server/log/.keep
+!/server/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/server/tmp/pids/*
+!/server/tmp/pids/
+!/server/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+/server/storage/*
+!/server/storage/.keep
+/server/.byebug_history
+
+# Ignore master key for decrypting credentials and more.
+/server/config/master.key
