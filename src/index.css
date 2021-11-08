@@ -5,10 +5,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: rgb(118, 118,118)
+  background-color: rgb(44, 44, 44)
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.App {
+  width: 300px;
+  height: 490px;
+
+  background-color: rgb(44, 44, 44)
+}
+
+.Login {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  background-color: rgb(44, 44, 44)
+
 }
