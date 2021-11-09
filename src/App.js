@@ -11,21 +11,8 @@ class App extends Component {
 
   create_or_find_user = (token) => {
     //Retrieve User Information from Spotify
+    console.log(token)
     let user = fetchUser(token);
-
-    //Store in Local Storage for later use
-    localStorage.setItem("spotifyUser", user.displayName);
-
-    // Make POST to Backend to create or find user based on email
-    fetch(`${process.env.REACT_APP_HOST}/users/new`, {
-      method: 'POST', headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user: user
-      })
-    })
   }
 
   render() {

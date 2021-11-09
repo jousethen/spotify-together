@@ -10,7 +10,24 @@ export const fetchUser = (token) => {
       return response.json();
     })
     .then((json) => {
+
       console.log(json)
-      return { email: json.email, displayName: json.displayName }
+
+      // Make POST to Backend to create or find user based on email
+      fetch(`${process.env.REACT_APP_HOST}/users/new`, {
+        method: 'POST', headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: {
+            email: json.email,
+            display_name: json.display_name
+          }
+        })
+      })
+
+      //Store in Local Storage for later use
+      localStorage.setItem("spotifyUser", json.display_name);
     });
 }
