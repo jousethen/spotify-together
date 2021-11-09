@@ -10,24 +10,25 @@ import { fetchUser } from './utility/spotifyApi'
 class App extends Component {
 
   create_or_find_user = (token) => {
-    let user;
-
     //Retrieve User Information from Spotify
-    user = fetchUser(token);
-    console.log(user);
+    let user = fetchUser(token);
 
-    //Make POST to Backend to create or find user based on email
-    // fetch(`${process.env.REACT_APP_HOST}/users/new`, {
-    //   method: 'POST', headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({
-    //     user: user
-    //   })
-    // })
+    //Store in Local Storage for later use
+    localStorage.setItem("spotifyUser", user.displayName);
+
+    // Make POST to Backend to create or find user based on email
+    fetch(`${process.env.REACT_APP_HOST}/users/new`, {
+      method: 'POST', headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: user
+      })
+    })
 
   }
+
   render() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
