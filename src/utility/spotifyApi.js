@@ -18,7 +18,7 @@ export const fetchUser = (token) => {
 
 
       // Make POST to Backend to create or find user based on email
-      fetch(`${process.env.REACT_APP_API_HOST}/users/new`, {
+      fetch(`${process.env.REACT_APP_HOST}api/users/new`, {
         method: 'POST', headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
