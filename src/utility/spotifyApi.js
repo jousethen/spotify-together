@@ -11,7 +11,11 @@ export const fetchUser = (token) => {
     })
     .then((json) => {
 
-      console.log(json)
+      let user = {
+        email: json.email,
+        display_name: json.display_name
+      }
+
 
       // Make POST to Backend to create or find user based on email
       fetch(`${process.env.REACT_APP_API_HOST}/users/new`, {
@@ -20,10 +24,7 @@ export const fetchUser = (token) => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          user: {
-            email: json.email,
-            display_name: json.display_name
-          }
+          user: user
         })
       })
 
