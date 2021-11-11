@@ -6,6 +6,8 @@ import React, { Component } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from 'react-bootstrap/Image'
 import { fetchUser } from './utility/spotifyApi'
+import RoomsContainer from './containers/RoomsContainer';
+import Header from './components/Header';
 
 class App extends Component {
 
@@ -22,8 +24,14 @@ class App extends Component {
     return (
       < div className="App" >
         {
-          Boolean(localStorage.getItem("spotifyAuthToken"))
-            ? <div>You are logged in</div> :
+          Boolean(localStorage.getItem("spotifyAuthToken")) ? //Check to see if the user is logged in. 
+            <>
+              <Header />
+              <RoomsContainer />
+            </>
+
+            :
+
             <div className="Login">
               <Image src="./images/spotify-2-logo-png-transparent.png" roundedCircle width={100} />
               <br />
