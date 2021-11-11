@@ -18,7 +18,7 @@ class App extends Component {
   render() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
-    this.create_or_find_user(localStorage.getItem("spotifyAuthToken"));
+
     return (
       < div className="App" >
         {
