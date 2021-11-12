@@ -32,3 +32,7 @@ export const fetchUser = (token) => {
       localStorage.setItem("spotifyUser", json.display_name);
     });
 }
+
+export const createRoom = (hostToken, expire) => {
+
+}
