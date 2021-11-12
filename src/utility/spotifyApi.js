@@ -33,6 +33,27 @@ export const fetchUser = (token) => {
     });
 }
 
-export const createRoom = (hostToken, expire) => {
-
+export const createRoom = (hostToken) => {
+  // Make POST to Backend to create or find user based on email
+  fetch(`${process.env.REACT_APP_API_HOST}/api/rooms/new`, {
+    method: 'POST', headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      room: {
+        room_key: roomKey,
+        host_token: hostToken,
+      }
+    })
+  })
+    .then((responseJSON) => {
+      dispatchEvent({
+        type: "CREATE_ROOMS",
+        room: {
+          roomKey,
+          hostToken
+        }
+      });
+    });
 }
