@@ -5,7 +5,7 @@ import { createRoom } from "../actions/rooms"
 class RoomsContainer extends Component {
 
   handleOnCreateButton = event => {
-    //create room
+    this.props.createRoom();
   }
 
   render() {
