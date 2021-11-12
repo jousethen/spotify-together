@@ -17,5 +17,13 @@ class RoomsContainer extends Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createRoom: () => {
+      dispatch(createRoom());
+    }
+  }
+}
 
-export default connect()(RoomsContainer)
+
+export default connect(null, mapDispatchToProps)(RoomsContainer)
