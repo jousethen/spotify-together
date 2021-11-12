@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { Button, Image, ButtonGroup } from "react-bootstrap"
-
+import { createRoom } from "../actions/rooms"
 class RoomsContainer extends Component {
 
   handleOnCreateButton = event => {

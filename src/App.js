@@ -8,23 +8,23 @@ import Image from 'react-bootstrap/Image'
 import { fetchUser } from './utility/spotifyApi'
 import RoomsContainer from './containers/RoomsContainer';
 import Header from './components/Header';
+import Cookies from 'js-cookie';
 
 class App extends Component {
 
   create_or_find_user = (token) => {
     //Retrieve User Information from Spotify
-    console.log(token)
     let user = fetchUser(token);
   }
 
   render() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
-
+    console.log(Cookies.get("spotifyAuthToken"));
     return (
       < div className="App" >
         {
-          Boolean(localStorage.getItem("spotifyAuthToken")) ? //Check to see if the user is logged in. 
+          Boolean(Cookies.get('spotifyAuthToken')) ? //Check to see if the user is logged in. 
             <>
               <Header />
               <RoomsContainer />
@@ -43,7 +43,7 @@ class App extends Component {
                 clientID={client_id}
                 scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
                 onAccessToken={(token) => {
-                  localStorage.setItem("spotifyAuthToken", token);
+                  //localStorage.setItem("spotifyAuthToken", token);
                   this.create_or_find_user(token);
                 }
                 }
