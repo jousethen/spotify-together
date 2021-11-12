@@ -4,12 +4,15 @@ import { Button, Image, ButtonGroup } from "react-bootstrap"
 
 class RoomsContainer extends Component {
 
-  render() {
+  handleOnCreateButton = event => {
+    //create room
+  }
 
+  render() {
     return (
       <div className="room_container">
         <ButtonGroup vertical className="center" >
-          <Button variant="outline-light">Create Room</Button>
+          <Button onClick={() => { this.handleOnCreateButton() }} variant="outline-light">Create Room</Button>
           <Button variant="outline-light">Join Room</Button>
         </ButtonGroup>
       </div>
