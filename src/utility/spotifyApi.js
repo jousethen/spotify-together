@@ -42,7 +42,7 @@ export const createRoom = (hostToken) => {
     },
     body: JSON.stringify({
       room: {
-        room_key: roomKey,
+        room_key: generateRoomKey(),
         host_token: hostToken,
       }
     })
@@ -57,3 +57,14 @@ export const createRoom = (hostToken) => {
       });
     });
 }
+
+
+const generateRoomKey = () => {
+  let text = '';
+  const possible = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (let i = 0; i < 6; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
