@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
-    console.log(Cookies.get("spotifyAuthToken"));
+
     return (
       < div className="App" >
         {
@@ -43,7 +43,6 @@ class App extends Component {
                 clientID={client_id}
                 scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
                 onAccessToken={(token) => {
-                  //localStorage.setItem("spotifyAuthToken", token);
                   this.create_or_find_user(token);
                 }
                 }

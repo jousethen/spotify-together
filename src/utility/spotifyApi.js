@@ -1,4 +1,6 @@
 export const fetchUser = (token) => {
+  let user;
+
   fetch('https://api.spotify.com/v1/me', {
     method: 'GET', headers: {
       'Accept': 'application/json',
@@ -11,7 +13,7 @@ export const fetchUser = (token) => {
     })
     .then((json) => {
 
-      let user = {
+      user = {
         email: json.email,
         display_name: json.display_name
       }
@@ -29,12 +31,13 @@ export const fetchUser = (token) => {
       })
 
       //Store in Local Storage for later use
-      localStorage.setItem("spotifyUser", json.display_name);
+      localStorage.setItem("spotifyUser", json.email);
     });
 }
 
-export const createRoom = (hostToken) => {
+export const createRoom = (hostToken, email) => {
   // Make POST to Backend to create or find user based on email
+  dispatchEvent({ type: "CREATE_ROOM_START" })
   fetch(`${process.env.REACT_APP_API_HOST}/api/rooms/new`, {
     method: 'POST', headers: {
       'Accept': 'application/json',
@@ -44,6 +47,7 @@ export const createRoom = (hostToken) => {
       room: {
         room_key: generateRoomKey(),
         host_token: hostToken,
+        email: localStorage.getItem("spotifyUser"),
       }
     })
   })
