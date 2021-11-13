@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import rooms from './room';
+import { roomReducer } from './room';
 
 export default combineReducers({
-  rooms
+  roomReducer
 });

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { Button, Image, ButtonGroup } from "react-bootstrap"
+import { Button, ButtonGroup } from "react-bootstrap"
 import { createRoom } from "../actions/rooms"
 class RoomsContainer extends Component {
 
@@ -20,6 +20,12 @@ class RoomsContainer extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    room: state.room,
+    loading: state.loading,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     createRoom: () => {
@@ -29,4 +35,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(null, mapDispatchToProps)(RoomsContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RoomsContainer)

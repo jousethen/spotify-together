@@ -1,13 +1,13 @@
 
-const catsReducer = (state = { room: "", loading: false }, action) => {
+export const roomReducer = (state = { room: "", loading: false }, action) => {
+  console.log(action);
   switch (action.type) {
     case "CREATE_ROOM_START": {
       return {
         room: state.room,
-        creating: true,
+        loading: true,
       };
     }
-
     case "CREATE_ROOM": {
       return {
         room: action.room,

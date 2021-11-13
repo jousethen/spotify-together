@@ -14,7 +14,7 @@ class App extends Component {
 
   create_or_find_user = (token) => {
     //Retrieve User Information from Spotify
-    let user = fetchUser(token);
+    fetchUser(token);
   }
 
   render() {
