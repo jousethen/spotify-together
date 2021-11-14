@@ -26,29 +26,23 @@ class App extends Component {
       < div className="App" >
         <Header />
 
-        {
-          Boolean(Cookies.get('spotifyAuthToken')) ? //Check to see if the user is logged in. 
-            <>
-
-              <RoomsContainer />
-            </>
-
-            :
-
-            <div className="Login">
-              <Image src="./images/spotify-2-logo-png-transparent.png" roundedCircle width={100} />
-              <br />
-              <br />
-              <SpotifyAuth
-                title="Continue With Spotify"
-                redirectUri={redirectUri}
-                noLogo={true}
-                clientID={client_id}
-                scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
-                onAccessToken={(token) => { this.create_or_find_user(token); }
-                }
-              />
-            </div>
+        {Boolean(Cookies.get('spotifyAuthToken')) ? //Check to see if the user is logged in. 
+          <><RoomsContainer /></>
+          :
+          <div className="Login">
+            <Image src="./images/spotify-2-logo-png-transparent.png" roundedCircle width={100} />
+            <br />
+            <br />
+            <SpotifyAuth
+              title="Continue With Spotify"
+              redirectUri={redirectUri}
+              noLogo={true}
+              clientID={client_id}
+              scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
+              onAccessToken={(token) => { this.create_or_find_user(token); }
+              }
+            />
+          </div>
         }
       </div >
     );

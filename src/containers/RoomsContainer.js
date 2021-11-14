@@ -5,11 +5,20 @@ import { createRoom } from "../actions/rooms"
 import Cookies from "js-cookie";
 class RoomsContainer extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      room: "",
+      loading: false
+    }
+  }
+
   handleOnCreateButton = event => {
     this.props.createRoom(Cookies.get("spotifyAuthToken"));
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="room_container">
         <ButtonGroup vertical className="center" >
