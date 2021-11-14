@@ -15,6 +15,7 @@ class App extends Component {
   create_or_find_user = (token) => {
     //Retrieve User Information from Spotify
     fetchUser(token);
+    window.location.href = process.env.REACT_APP_HOST;
   }
 
   render() {
@@ -23,10 +24,12 @@ class App extends Component {
 
     return (
       < div className="App" >
+        <Header />
+
         {
           Boolean(Cookies.get('spotifyAuthToken')) ? //Check to see if the user is logged in. 
             <>
-              <Header />
+
               <RoomsContainer />
             </>
 
@@ -42,9 +45,7 @@ class App extends Component {
                 noLogo={true}
                 clientID={client_id}
                 scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
-                onAccessToken={(token) => {
-                  this.create_or_find_user(token);
-                }
+                onAccessToken={(token) => { this.create_or_find_user(token); }
                 }
               />
             </div>
