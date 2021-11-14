@@ -5,26 +5,19 @@ import { createRoom } from "../actions/rooms"
 import Cookies from "js-cookie";
 class RoomsContainer extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      room: "",
-      loading: false
-    }
-  }
-
   handleOnCreateButton = event => {
     this.props.createRoom(Cookies.get("spotifyAuthToken"));
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className="room_container">
-        <ButtonGroup vertical className="center" >
-          <Button onClick={() => { this.handleOnCreateButton() }} variant="outline-light">Create Room</Button>
-          <Button variant="outline-light">Join Room</Button>
-        </ButtonGroup>
+        {this.props.room ? <h1>Redirect</h1> :
+          <ButtonGroup vertical className="center" >
+            <Button onClick={() => { this.handleOnCreateButton() }} variant="outline-light">Create Room</Button>
+            <Button variant="outline-light">Join Room</Button>
+          </ButtonGroup>
+        }
       </div>
     )
   }
@@ -32,8 +25,8 @@ class RoomsContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    room: state.room,
-    loading: state.loading,
+    room: state.room.room,
+    loading: state.room.loading,
   };
 };
 

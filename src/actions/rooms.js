@@ -19,7 +19,7 @@ export const createRoom = (hostToken) => {
       .then((responseJSON) => {
         //Complete Dispatch of room creation
         dispatch({
-          type: "CREATE_ROOMS",
+          type: "CREATE_ROOM",
           room: {
             roomKey,
             hostToken,
