@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { Button, ButtonGroup } from "react-bootstrap"
 import { createRoom } from "../actions/rooms"
+import Cookies from "js-cookie";
 class RoomsContainer extends Component {
 
   handleOnCreateButton = event => {
-    this.props.createRoom();
+    this.props.createRoom(Cookies.get("spotifyAuthToken"));
   }
 
   render() {
@@ -26,10 +27,11 @@ const mapStateToProps = (state) => {
     loading: state.loading,
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    createRoom: () => {
-      dispatch(createRoom());
+    createRoom: (hostToken) => {
+      dispatch(createRoom(hostToken));
     }
   }
 }

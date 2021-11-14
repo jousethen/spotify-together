@@ -3,7 +3,6 @@ export const createRoom = (hostToken) => {
     // Kick of dispatch to start room creation
     dispatch({ type: "CREATE_ROOM_START" });
     let roomKey = generateRoomKey();
-
     fetch(`${process.env.REACT_APP_API_HOST}/api/rooms/new`, {
       method: 'POST', headers: {
         'Accept': 'application/json',
@@ -13,8 +12,8 @@ export const createRoom = (hostToken) => {
         room: {
           room_key: roomKey,
           host_token: hostToken,
-          email: localStorage.getItem("spotifyUser"),
-        }
+        },
+        email: localStorage.getItem("spotifyUser"),
       })
     })
       .then((responseJSON) => {
@@ -23,7 +22,7 @@ export const createRoom = (hostToken) => {
           type: "CREATE_ROOMS",
           room: {
             roomKey,
-            hostToken
+            hostToken,
           }
         });
       });
