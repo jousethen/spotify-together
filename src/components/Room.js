@@ -19,7 +19,11 @@ class Room extends Component {
   }
 
   componentDidMount() {
-    fetchPlayingTrack(this.props.room.hostToken)
+    let t = fetchPlayingTrack(this.props.room.hostToken)
+    // this.setState({
+    //   currentTrack: fetchPlayingTrack(this.props.room.hostToken)
+    // })
+    console.log(t)
   }
 
   render() {
