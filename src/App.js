@@ -5,7 +5,7 @@ import React, { Component } from "react";
 // import { connect } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from 'react-bootstrap/Image'
-import { fetchUser } from './utility/spotifyApi'
+import { fetchUser } from './actions/user'
 import RoomsContainer from './containers/RoomsContainer';
 import Header from './components/Header';
 import Cookies from 'js-cookie';
