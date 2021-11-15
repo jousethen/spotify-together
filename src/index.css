@@ -40,6 +40,11 @@ code {
   left: 10px;
 }
 
+.album_art {
+  position: absolute;
+  top: 30%;
+}
+
 .center {
   position: absolute;
   top: 30%;

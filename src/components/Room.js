@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { fetchPlayingTrack } from '../actions/playback';
-
+import { Spinner } from 'react-bootstrap';
+import SongInfo from './SongInfo'
 class Room extends Component {
   constructor() {
     super();
@@ -23,18 +24,21 @@ class Room extends Component {
   }
 
   render() {
-    return (
-      <div className="room">
-
-      </div>
-    )
+    if (Boolean(this.props.currentTrack.album)) {
+      return (
+        <SongInfo currentTrack={this.props.currentTrack} />
+      )
+    }
+    else {
+      return <div />
+    }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    room: state.room.room,
-    loading: state.room.loading,
+    currentTrack: state.playback.track,
+    trackLoading: state.playback.loading,
   };
 };
 
