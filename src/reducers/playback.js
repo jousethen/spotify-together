@@ -1,6 +1,5 @@
 
 export const playbackReducer = (state = { track: {}, loading: false }, action) => {
-  console.log(action);
   switch (action.type) {
     case "LOADING_CURRENT_TRACK":
       return {

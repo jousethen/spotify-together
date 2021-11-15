@@ -19,7 +19,7 @@ class Room extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchPlayingTrack();
+    this.props.fetchPlayingTrack(this.props.room.hostToken);
   }
 
   render() {
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPlayingTrack: () => dispatch(fetchPlayingTrack()),
+    fetchPlayingTrack: (hostToken) => dispatch(fetchPlayingTrack(hostToken)),
   };
 };
 
