@@ -13,21 +13,37 @@ import { Outlet } from 'react-router';
 
 class App extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      time: 0
+    }
+  }
   create_or_find_user = (token) => {
     //Retrieve User Information from Spotify
     fetchUser(token);
-    window.location.href = process.env.REACT_APP_HOST;
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => this.setState({ time: Date.now() }), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
-
+    let date = new Date(this.state.time)
+    let exp = new Date(localStorage.getItem("tokenExp"))
     return (
       < div className="App" >
+
         <Header />
         <Outlet />
-        {Boolean(Cookies.get('spotifyAuthToken')) ? //Check to see if the user is logged in. 
+
+        {Boolean(date < exp) ? //Check to see if the user is logged in and token is valid
           <><RoomsContainer /></>
           :
           <div className="Login">

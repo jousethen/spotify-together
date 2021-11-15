@@ -19,11 +19,7 @@ class Room extends Component {
   }
 
   componentDidMount() {
-    let t = fetchPlayingTrack(this.props.room.hostToken)
-    // this.setState({
-    //   currentTrack: fetchPlayingTrack(this.props.room.hostToken)
-    // })
-    console.log(t)
+    this.props.fetchPlayingTrack();
   }
 
   render() {
@@ -42,7 +38,11 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchPlayingTrack: () => dispatch(fetchPlayingTrack()),
+  };
+};
 
 
-
-export default connect(mapStateToProps)(Room)
+export default connect(mapStateToProps, mapDispatchToProps)(Room)

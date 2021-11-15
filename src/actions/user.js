@@ -31,6 +31,11 @@ export const fetchUser = (token) => {
       })
 
       //Store in Local Storage for later use
+      let dt = new Date();
+      dt.setHours(dt.getHours() + 1);
+
       localStorage.setItem("spotifyUser", json.email);
+      localStorage.setItem("tokenExp", dt);
+      window.location.href = process.env.REACT_APP_HOST;
     });
 }
