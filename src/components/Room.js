@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
+import { fetchPlayingTrack } from '../actions/playback';
+
 class Room extends Component {
   constructor() {
     super();
     this.state = {
       start: Date.now(),
-      currentPosition: 0
+      currentPosition: 0,
+      currentTrack: {},
     }
     this.timer = null;
     this.tick = () => {
@@ -14,6 +17,11 @@ class Room extends Component {
       });
     };
   }
+
+  componentDidMount() {
+    fetchPlayingTrack(this.props.room.hostToken)
+  }
+
   render() {
     return (
       <div className="room">

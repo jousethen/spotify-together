@@ -14,7 +14,7 @@ class RoomsContainer extends Component {
     return (
       <div className="room_container">
         {this.props.room ?
-          <Room /> :
+          <Room room={this.props.room} /> :
           <ButtonGroup vertical className="center" >
             <Button onClick={() => { this.handleOnCreateButton() }} variant="outline-light">Create Room</Button>
             <Button variant="outline-light">Join Room</Button>
