@@ -13,6 +13,7 @@ export const fetchPlayingTrack = (hostToken) => {
         return response.json();
       })
       .then((json) => {
+        console.log(json)
         let track = {
           artists: json.item.artists,
           album: {
