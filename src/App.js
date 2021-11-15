@@ -9,6 +9,7 @@ import { fetchUser } from './utility/spotifyApi'
 import RoomsContainer from './containers/RoomsContainer';
 import Header from './components/Header';
 import Cookies from 'js-cookie';
+import { Outlet } from 'react-router';
 
 class App extends Component {
 
@@ -25,7 +26,7 @@ class App extends Component {
     return (
       < div className="App" >
         <Header />
-
+        <Outlet />
         {Boolean(Cookies.get('spotifyAuthToken')) ? //Check to see if the user is logged in. 
           <><RoomsContainer /></>
           :
