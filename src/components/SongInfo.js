@@ -22,6 +22,7 @@ const SongInfo = (props) => {
       </style>
       <ProgressBar now={props.percentage} />
       <p id="room-key">Room Id: {props.room.roomKey}</p>
+      <Button onClick={props.closeRoom(props.room.roomKey)} variant="outline-warning">Close Room</Button>
     </>
   )
 }
