@@ -19,6 +19,7 @@ class Room extends React.PureComponent {
   }
 
   componentDidUpdate(props) {
+    //Update SongInfo when Song Ends
     if (this.state.currentPosition >= this.props.currentTrack.duration_ms) {
       this.setState({
         start: Date.now(),
@@ -30,20 +31,27 @@ class Room extends React.PureComponent {
   }
 
   componentDidMount() {
+    //Initialize timer for "Now Playing" progress bar
     this.timer = setInterval(this.tick, 300);
-    console.log(this.timer)
+
+    //Fetch Host's playing song
     this.props.fetchPlayingTrack(this.props.room.hostToken);
   }
 
   componentWillUnmount() {
     clearInterval(this.timer);
   }
+
   render() {
-    console.log(this.state.currentPosition, this.props.currentTrack.duration_ms)
     const percentage = +(this.state.currentPosition * 100 / this.props.currentTrack.duration_ms).toFixed(2);
+
+    // Only render if currentTrack information is available
     if (Boolean(this.props.currentTrack.album)) {
       return (
-        <SongInfo currentTrack={this.props.currentTrack} percentage={percentage} />
+        <SongInfo
+          currentTrack={this.props.currentTrack}
+          percentage={percentage}
+          room={this.props.room} />
       )
     }
     else {

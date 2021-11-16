@@ -40,7 +40,7 @@ code {
   left: 10px;
 }
 
-#album_art {
+#album-art {
   width: 200px;
   height: 200px;
   margin-top: 20px;
@@ -62,7 +62,7 @@ header {
   margin-right: 13px;
 }
 
-#song_name {
+#song-name {
   font-size: large;
   color: white;
   text-align: left;
@@ -71,20 +71,28 @@ header {
   margin-bottom: 0px;
 }
 
-#artists_name {
+#artists-name {
   font-size: medium;
   color: white;
   margin-left: 15px;
   text-align: left;
 }
 
-#playing_from {
+#playing-from {
   color: white;
   font-size: small;
   margin-bottom: 0;
 }
-#album_name {
+#album-name {
   color: white;
   font-size: small;
   margin-bottom: 0;
+}
+
+#room-key {
+  position:relative;
+  font-size: larger;
+  font-weight: bold;
+  color: #2ebd59;
+  padding: 10px;
 }

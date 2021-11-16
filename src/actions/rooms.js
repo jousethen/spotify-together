@@ -17,12 +17,17 @@ export const createRoom = (hostToken) => {
       })
     })
       .then((responseJSON) => {
+        return responseJSON.json()
+      })
+
+      .then((json) => {
+        console.log(json)
         //Complete Dispatch of room creation
         dispatch({
           type: "CREATE_ROOM",
           room: {
-            roomKey,
-            hostToken,
+            roomKey: json.room.room_key,
+            hostToken: hostToken,
           }
         });
       });
