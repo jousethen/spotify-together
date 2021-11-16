@@ -44,10 +44,31 @@ const generateRoomKey = () => {
   }
   return text;
 };
+/* ----------------------------------------------------*/
+export const deleteRoom = (roomKey) => {
+  return (dispatch) => {
+    // Kick of dispatch to start room creation
+    dispatch({ type: "DELETE_ROOM_START" });
+    let roomKey = generateRoomKey();
+    fetch(`${process.env.REACT_APP_API_HOST}/api/rooms/delete`, {
+      method: 'POST', headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        room_key: roomKey,
+      })
+    })
+      .then((responseJSON) => {
+        return responseJSON.json()
+      })
 
-export function deleteRoom(roomKey) {
-  return {
-    type: "REMOVE_ROOM",
-    roomKey: roomKey
-  }
-}
+      .then((json) => {
+        //Complete Dispatch of room creation
+        dispatch({
+          type: "DELETE_ROOM",
+        });
+      });
+  };
+};
+
