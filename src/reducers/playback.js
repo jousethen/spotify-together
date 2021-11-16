@@ -13,6 +13,12 @@ export const playbackReducer = (state = { track: {}, loading: false }, action) =
         track: action.track,
         loading: false,
       }
+
+    case "NO_TRACK":
+      return {
+        ...state,
+        loading: false,
+      }
     default:
       return state;
   }

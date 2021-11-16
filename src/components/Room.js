@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { fetchPlayingTrack } from '../actions/playback';
 import { deleteRoom } from '../actions/rooms';
 import SongInfo from './SongInfo'
-class Room extends React.PureComponent {
+import { Spinner, Button } from 'react-bootstrap';
+class Room extends Component {
   constructor() {
     super();
     this.state = {
@@ -47,22 +48,36 @@ class Room extends React.PureComponent {
     this.props.deleteRoom(roomKey)
   }
 
+  refresh = () => {
+    this.setState({
+      start: Date.now(),
+      currentPosition: 0
+    })
+    this.props.fetchPlayingTrack(this.props.room.hostToken);
+  }
+
   render() {
     const percentage = +(this.state.currentPosition * 100 / this.props.currentTrack.duration_ms).toFixed(2);
 
     // Only render if currentTrack information is available
     if (Boolean(this.props.currentTrack.album)) {
       return (
-        <SongInfo
-          currentTrack={this.props.currentTrack}
-          percentage={percentage}
-          room={this.props.room}
-          closeRoom={this.closeRoom} />
+        <>
+          <SongInfo
+            currentTrack={this.props.currentTrack}
+            percentage={percentage}
+            room={this.props.room}
+            closeRoom={this.closeRoom} />
+          <Button onClick={(event) => { this.refresh() }} variant="outline-success">Refresh</Button>
+        </>
       )
+
     }
     else {
-      return <div />
+      return <Button onClick={(event) => { this.refresh() }} variant="outline-success">Refresh</Button>
     }
+
+
   }
 }
 

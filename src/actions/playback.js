@@ -26,6 +26,9 @@ export const fetchPlayingTrack = (hostToken) => {
           progress_ms: json.progress_ms
         }
         dispatch({ type: "LOAD_CURRENT_TRACK_SUCCESS", track: track })
-      });
+      })
+      .catch((error) => {
+        dispatch({ type: "NO_TRACK" })
+      })
   }
 }
