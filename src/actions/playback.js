@@ -17,7 +17,7 @@ export const fetchPlayingTrack = (hostToken) => {
         let track = {
           artists: json.item.artists,
           album: {
-            image: json.item.album.images[2].url,
+            image: json.item.album.images[0].url,
             name: json.item.album.name
           },
           id: json.item.id,

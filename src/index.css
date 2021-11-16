@@ -40,11 +40,12 @@ code {
   left: 10px;
 }
 
-.album_art {
-  position: absolute;
-  top: 30%;
+#album_art {
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+  
 }
-
 .center {
   position: absolute;
   top: 30%;
@@ -59,4 +60,31 @@ header {
   top: 20 px;
   left: 30 px;
   color: white;
+}
+
+#song_name {
+  font-size: large;
+  color: white;
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+#artists_name {
+  font-size: medium;
+  color: white;
+  margin-left: 15px;
+  text-align: left;
+}
+
+#playing_from {
+  color: white;
+  font-size: small;
+  margin-bottom: 0;
+}
+#album_name {
+  color: white;
+  font-size: small;
+  margin-bottom: 0;
 }
