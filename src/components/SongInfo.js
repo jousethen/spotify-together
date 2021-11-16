@@ -18,9 +18,9 @@ const SongInfo = (props) => {
           }
         })}
       </div>
-      <style type="text/css">{`.progress-bar { background-color: #2ebd59;}`}
+      <style type="text/css">{`.progress-bar { background-color: #2ebd59; height:5px} .progress{height:5px}`}
       </style>
-      <ProgressBar color="#2ebd59" now={props.percentage} />
+      <ProgressBar now={props.percentage} />
     </>
   )
 }

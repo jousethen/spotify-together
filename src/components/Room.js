@@ -18,6 +18,16 @@ class Room extends React.PureComponent {
     };
   }
 
+  componentDidUpdate(props) {
+    if (this.state.currentPosition >= this.props.currentTrack.duration_ms) {
+      this.setState({
+        start: Date.now(),
+        currentPosition: 0,
+        currentTrack: {},
+      });
+      this.props.fetchPlayingTrack(this.props.room.hostToken);
+    }
+  }
 
   componentDidMount() {
     this.timer = setInterval(this.tick, 300);
@@ -29,6 +39,7 @@ class Room extends React.PureComponent {
     clearInterval(this.timer);
   }
   render() {
+    console.log(this.state.currentPosition, this.props.currentTrack.duration_ms)
     const percentage = +(this.state.currentPosition * 100 / this.props.currentTrack.duration_ms).toFixed(2);
     if (Boolean(this.props.currentTrack.album)) {
       return (
