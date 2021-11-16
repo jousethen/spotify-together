@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { fetchPlayingTrack } from '../actions/playback';
+import { deleteRoom } from '../actions/rooms';
 import SongInfo from './SongInfo'
 class Room extends React.PureComponent {
   constructor() {
@@ -42,6 +43,10 @@ class Room extends React.PureComponent {
     clearInterval(this.timer);
   }
 
+  closeRoom = (roomKey) => {
+    this.props.deleteRoom(roomKey)
+  }
+
   render() {
     const percentage = +(this.state.currentPosition * 100 / this.props.currentTrack.duration_ms).toFixed(2);
 
@@ -51,7 +56,8 @@ class Room extends React.PureComponent {
         <SongInfo
           currentTrack={this.props.currentTrack}
           percentage={percentage}
-          room={this.props.room} />
+          room={this.props.room}
+          closeRoom={this.closeRoom} />
       )
     }
     else {
