@@ -22,7 +22,7 @@ class Room extends Component {
 
   componentDidUpdate(props) {
     //Update SongInfo when Song Ends
-    if (this.state.currentPosition >= this.props.currentTrack.duration_ms) {
+    if (this.state.currentPosition >= this.props.currentTrack.duration_ms + 2000) {
       this.setState({
         start: Date.now(),
         currentPosition: 0,
@@ -44,8 +44,8 @@ class Room extends Component {
     clearInterval(this.timer);
   }
 
-  closeRoom = (roomKey) => {
-    this.props.deleteRoom(roomKey)
+  closeRoom = () => {
+    this.props.deleteRoom(this.props.room.roomKey)
   }
 
   refresh = () => {
