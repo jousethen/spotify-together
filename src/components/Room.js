@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { fetchPlayingTrack } from '../actions/playback';
-import { Spinner } from 'react-bootstrap';
 import SongInfo from './SongInfo'
-class Room extends Component {
+class Room extends React.PureComponent {
   constructor() {
     super();
     this.state = {
@@ -14,19 +13,26 @@ class Room extends Component {
     this.timer = null;
     this.tick = () => {
       this.setState({
-        currentPosition: Date.now() - this.state.start + (this.props.position || 0)
+        currentPosition: Date.now() - this.state.start + (this.props.currentTrack.progress_ms || 0)
       });
     };
   }
 
+
   componentDidMount() {
+    this.timer = setInterval(this.tick, 300);
+    console.log(this.timer)
     this.props.fetchPlayingTrack(this.props.room.hostToken);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
   render() {
+    const percentage = +(this.state.currentPosition * 100 / this.props.currentTrack.duration_ms).toFixed(2);
     if (Boolean(this.props.currentTrack.album)) {
       return (
-        <SongInfo currentTrack={this.props.currentTrack} />
+        <SongInfo currentTrack={this.props.currentTrack} percentage={percentage} />
       )
     }
     else {

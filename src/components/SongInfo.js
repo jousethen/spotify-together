@@ -1,8 +1,7 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+import { Image, ProgressBar } from 'react-bootstrap';
 
 const SongInfo = (props) => {
-  console.log(props)
   return (
     <>
       <p id="playing_from">Playing from Album</p>
@@ -19,6 +18,9 @@ const SongInfo = (props) => {
           }
         })}
       </div>
+      <style type="text/css">{`.progress-bar { background-color: #2ebd59;}`}
+      </style>
+      <ProgressBar color="#2ebd59" now={props.percentage} />
     </>
   )
 }
