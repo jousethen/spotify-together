@@ -18,7 +18,7 @@ class RoomsContainer extends Component {
 
   onHandleSubmit = (event) => {
     event.preventDefault();
-    this.props.findRoom(event.target.value);
+    this.props.findRoom(this.state.roomKeyText);
   }
 
   onHandleChange = (event) => {

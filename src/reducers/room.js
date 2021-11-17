@@ -25,6 +25,22 @@ export const roomReducer = (state = { room: "", loading: false }, action) => {
         room: null,
         loading: false,
       }
+
+    case "SEARCHING_FOR_ROOM":
+      return {
+        ...state,
+        room: null,
+        loading: true,
+      }
+
+    case "ROOM_FOUND":
+      return {
+        ...state,
+        room: action.room,
+        loading: false,
+      }
+
+
     default:
       return state;
   }

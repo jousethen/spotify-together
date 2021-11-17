@@ -77,7 +77,7 @@ export const findRoom = (roomKey) => {
   return (dispatch) => {
     // Kick of dispatch to start room creation
     dispatch({ type: "SEARCHING_FOR_ROOM" });
-
+    console.log(roomKey)
     fetch(`${process.env.REACT_APP_API_HOST}/api/rooms/${roomKey}`, {
       method: 'POST', headers: {
         'Accept': 'application/json',
@@ -93,6 +93,7 @@ export const findRoom = (roomKey) => {
 
       .then((json) => {
         //Complete Dispatch of room creation
+        console.log(json)
         dispatch({
           type: "ROOM_FOUND",
           room: {
