@@ -1,3 +1,4 @@
+import Cookie from "js-cookie"
 export const fetchPlayingTrack = (hostToken, isHost) => {
   // Going to use this action for both pulling and syncing
   let track;
@@ -31,7 +32,12 @@ export const fetchPlayingTrack = (hostToken, isHost) => {
         dispatch({ type: "SYNC_BEGIN", track: track });
 
         //Sync track after track has been obtainedW
-        // syncTrack();
+        syncTrack(
+          Cookie.get("spotifyAuthToken"),
+          json.item.album.uri,
+          json.item.track_number,
+          json.progress_ms
+        );
 
       })
       .catch((error) => {
@@ -40,6 +46,19 @@ export const fetchPlayingTrack = (hostToken, isHost) => {
   }
 }
 
-// const syncTrack () {
-//   return "2"
-// }
+const syncTrack = (token, album, track, position) => {
+  fetch('https://api.spotify.com/v1/me/player/play', {
+    method: 'PUT', headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+    body: JSON.stringify({
+      "context_uri": album,
+      "offset": {
+        "position": track - 1
+      },
+      "position_ms": position
+    })
+  });
+}

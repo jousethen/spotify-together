@@ -16,9 +16,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      time: 0
+      time: 0,
     }
   }
+
   create_or_find_user = (token) => {
     //Retrieve User Information from Spotify
     fetchUser(token);
@@ -45,14 +46,11 @@ class App extends Component {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
     let date = new Date(this.state.time)
-    let exp;
+    let exp = new Date(this.state.time + 100000)
 
     //Check if there is a token
     if (localStorage.getItem("tokenExp")) {
       exp = new Date(localStorage.getItem("tokenExp"))
-    }
-    else {
-      exp = new Date(this.state.time + 100000)
     }
 
     return (

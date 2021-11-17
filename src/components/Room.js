@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { fetchPlayingTrack } from '../actions/playback';
 import { deleteRoom, exitRoom } from '../actions/rooms';
 import SongInfo from './SongInfo'
-
+import { Button } from 'react-bootstrap';
 class Room extends Component {
   constructor() {
     super();
