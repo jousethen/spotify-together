@@ -28,7 +28,7 @@ export const createRoom = (hostToken) => {
           room: {
             roomKey: json.room.room_key,
             hostToken: hostToken,
-            user: json.room.host
+            host: json.room.host
           }
         });
       });
@@ -70,6 +70,41 @@ export const deleteRoom = (roomKey) => {
           type: "DELETE_ROOM",
         });
       });
+  };
+};
+
+export const findRoom = (roomKey) => {
+  return (dispatch) => {
+    // Kick of dispatch to start room creation
+    dispatch({ type: "SEARCHING_FOR_ROOM" });
+
+    fetch(`${process.env.REACT_APP_API_HOST}/api/rooms/${roomKey}`, {
+      method: 'POST', headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        room_key: roomKey,
+      })
+    })
+      .then((responseJSON) => {
+        return responseJSON.json()
+      })
+
+      .then((json) => {
+        //Complete Dispatch of room creation
+        dispatch({
+          type: "ROOM_FOUND",
+          room: {
+            roomKey: json.room.room_key,
+            hostToken: json.room.host_token,
+            host: json.room.host
+          }
+        });
+      })
+      .catch((error) => {
+        console.log(error, "ERROR NOT FOUND I EGUES")
+      })
   };
 };
 
