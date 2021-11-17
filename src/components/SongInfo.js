@@ -4,7 +4,6 @@ import { Image, ProgressBar, Button } from 'react-bootstrap';
 
 const SongInfo = (props) => {
 
-
   return (
     <>
       <p id="playing-from">Playing from Album</p>
@@ -25,7 +24,10 @@ const SongInfo = (props) => {
       </style>
       <ProgressBar now={props.percentage} />
       <p id="room-key">Room Id: {props.room.roomKey}</p>
-      <Button onClick={props.closeRoom} variant="outline-warning">Close Room</Button>
+      {props.isHost ?
+        <Button onClick={props.closeRoom} variant="outline-warning">Close Room</Button> :
+        <Button onClick={props.exitRoom} variant="outline-warning">Leave Room</Button>
+      }
     </>
   )
 }
