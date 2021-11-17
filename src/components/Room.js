@@ -20,7 +20,7 @@ class Room extends Component {
       });
     };
 
-    // if (this.props.room.host.spotify_id)
+
   }
 
   componentDidUpdate(props) {
@@ -38,6 +38,13 @@ class Room extends Component {
   componentDidMount() {
     //Initialize timer for "Now Playing" progress bar
     this.timer = setInterval(this.tick, 300);
+
+    //Check to see if the user is this room's host
+    if (this.props.room.host.spotify_id !== localStorage.getItem("spotifyUser")) {
+      this.setState({
+        isHost: false
+      })
+    }
 
     //Fetch Host's playing song
     this.props.fetchPlayingTrack(this.props.room.hostToken);
