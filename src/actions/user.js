@@ -36,5 +36,6 @@ export const fetchUser = (token) => {
 
       localStorage.setItem("spotifyUser", json.id);
       localStorage.setItem("tokenExp", dt);
+
     });
 }

@@ -32,19 +32,40 @@ class App extends Component {
     clearInterval(this.interval);
   }
 
+  logout = (event) => {
+    console.log(Cookies.get("spotifyAuthToken"))
+    Cookies.remove("spotifyAuthToken");
+    localStorage.removeItem("spotifyUser");
+    localStorage.removeItem("tokenExp");
+
+    window.location.href = process.env.REACT_APP_HOST;
+  }
+
   render() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
     let date = new Date(this.state.time)
-    let exp = new Date(localStorage.getItem("tokenExp"))
+    let exp;
+
+    //Check if there is a token
+    if (localStorage.getItem("tokenExp")) {
+      exp = new Date(localStorage.getItem("tokenExp"))
+    }
+    else {
+      exp = new Date(this.state.time + 100000)
+    }
+
     return (
       < div className="App" >
 
-        <Header />
+        <Header logout={this.logout} />
         <Outlet />
 
-        {Boolean(date < exp) ? //Check to see if the user is logged in and token is valid
-          <><RoomsContainer /></>
+        {Boolean(date < exp) && Boolean(Cookies.get("spotifyAuthToken")) ? //Check to see if the user is logged in and token is valid
+          <>
+            <RoomsContainer />
+
+          </>
           :
           <div className="Login">
             <Image src="./images/spotify-2-logo-png-transparent.png" roundedCircle width={100} />

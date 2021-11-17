@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { Image, ProgressBar, Button } from 'react-bootstrap';
 
 const SongInfo = (props) => {
