@@ -22,7 +22,7 @@ export const roomReducer = (state = { room: "", loading: false }, action) => {
     case "DELETE_ROOM":
       return {
         ...state,
-        room: {},
+        room: null,
         loading: false,
       }
     default:

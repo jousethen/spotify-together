@@ -13,7 +13,7 @@ export const createRoom = (hostToken) => {
           room_key: roomKey,
           host_token: hostToken,
         },
-        email: localStorage.getItem("spotifyUser"),
+        spotify_id: localStorage.getItem("spotifyUser"),
       })
     })
       .then((responseJSON) => {
@@ -28,6 +28,7 @@ export const createRoom = (hostToken) => {
           room: {
             roomKey: json.room.room_key,
             hostToken: hostToken,
+            user: json.room.host
           }
         });
       });

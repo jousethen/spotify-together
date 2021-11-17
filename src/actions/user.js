@@ -12,10 +12,10 @@ export const fetchUser = (token) => {
       return response.json();
     })
     .then((json) => {
-
       user = {
         email: json.email,
-        display_name: json.display_name
+        display_name: json.display_name,
+        spotify_id: json.id
       }
 
 
@@ -34,8 +34,7 @@ export const fetchUser = (token) => {
       let dt = new Date();
       dt.setHours(dt.getHours() + 1);
 
-      localStorage.setItem("spotifyUser", json.email);
+      localStorage.setItem("spotifyUser", json.id);
       localStorage.setItem("tokenExp", dt);
-      window.location.href = process.env.REACT_APP_HOST;
     });
 }
