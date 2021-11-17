@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { fetchPlayingTrack } from '../actions/playback';
-import { deleteRoom } from '../actions/rooms';
+import { deleteRoom, exitRoom } from '../actions/rooms';
 import SongInfo from './SongInfo'
 import { Spinner, Button } from 'react-bootstrap';
 class Room extends Component {
@@ -58,6 +58,10 @@ class Room extends Component {
     this.props.deleteRoom(this.props.room.roomKey)
   }
 
+  exitRoom = () => {
+    this.props.exitRoom(this.props.room.roomKey)
+  }
+
   refresh = () => {
     this.setState({
       start: Date.now(),
@@ -103,6 +107,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchPlayingTrack: (hostToken) => dispatch(fetchPlayingTrack(hostToken)),
     deleteRoom: (roomKey) => dispatch(deleteRoom(roomKey))
+    exitRoom: (roomKey) => dispatch(exitRoom(roomKey))
   };
 };
 

@@ -48,6 +48,13 @@ export const roomReducer = (state = { room: "", loading: false }, action) => {
         error: true
       }
 
+    case "EXIT_ROOM":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        room: null
+      }
     default:
       return state;
   }

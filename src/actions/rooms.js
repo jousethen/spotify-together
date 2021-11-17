@@ -109,3 +109,11 @@ export const findRoom = (roomKey) => {
   };
 };
 
+export const exitRoom = (roomKey) => {
+  return (dispatch) => {
+
+    dispatch({ type: "EXIT_ROOM" });
+
+  };
+};
+
