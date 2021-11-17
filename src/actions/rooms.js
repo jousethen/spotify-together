@@ -21,14 +21,13 @@ export const createRoom = (hostToken) => {
       })
 
       .then((json) => {
-        console.log(json)
         //Complete Dispatch of room creation
         dispatch({
           type: "CREATE_ROOM",
           room: {
             roomKey: json.room.room_key,
             hostToken: hostToken,
-            host: json.room.host
+            host: json.host
           }
         });
       });
@@ -77,7 +76,6 @@ export const findRoom = (roomKey) => {
   return (dispatch) => {
     // Kick of dispatch to start room creation
     dispatch({ type: "SEARCHING_FOR_ROOM" });
-    console.log(roomKey)
     fetch(`${process.env.REACT_APP_API_HOST}/api/rooms/${roomKey}`, {
       method: 'POST', headers: {
         'Accept': 'application/json',
@@ -99,12 +97,14 @@ export const findRoom = (roomKey) => {
           room: {
             roomKey: json.room.room_key,
             hostToken: json.room.host_token,
-            host: json.room.host
+            host: json.host
           }
         });
       })
       .catch((error) => {
-        console.log(error, "ERROR NOT FOUND I EGUES")
+        dispatch({
+          type: "ROOM_NOT_FOUND",
+        });
       })
   };
 };

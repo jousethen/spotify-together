@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { Button, ButtonGroup, InputGroup, FormControl } from "react-bootstrap"
+import { Button, ButtonGroup, InputGroup, FormControl, Alert } from "react-bootstrap"
 import { createRoom, findRoom } from "../actions/rooms"
 import Cookies from "js-cookie";
 import Room from '../components/Room';
@@ -49,6 +49,11 @@ class RoomsContainer extends Component {
             </form>
           </ButtonGroup>
         }
+
+        {this.props.error === true ?
+          <Alert id="alert-warning" variant="warning">
+            Room Not Found
+          </Alert> : <></>}
       </div>
     )
   }
@@ -58,7 +63,7 @@ const mapStateToProps = (state) => {
   return {
     room: state.room.room,
     loading: state.room.loading,
-    host: state.room.host
+    error: state.room.error
   };
 };
 

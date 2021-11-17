@@ -45,8 +45,8 @@ code {
 }
 
 #album-art {
-  width: 200px;
-  height: 200px;
+  width: 175px;
+  height: 175px;
   margin-top: 20px;
   
 }
@@ -99,4 +99,9 @@ header {
   font-weight: bold;
   color: #2ebd59;
   padding: 10px;
+}
+
+#alert-warning {
+  top: 50%;
+  width: auto;
 }

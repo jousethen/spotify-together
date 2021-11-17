@@ -38,8 +38,15 @@ export const roomReducer = (state = { room: "", loading: false }, action) => {
         ...state,
         room: action.room,
         loading: false,
+        error: false
       }
 
+    case "ROOM_NOT_FOUND":
+      return {
+        ...state,
+        loading: false,
+        error: true
+      }
 
     default:
       return state;

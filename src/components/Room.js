@@ -11,6 +11,7 @@ class Room extends Component {
       start: Date.now(),
       currentPosition: 0,
       currentTrack: {},
+      isHost: true
     }
     this.timer = null;
     this.tick = () => {
@@ -18,6 +19,8 @@ class Room extends Component {
         currentPosition: Date.now() - this.state.start + (this.props.currentTrack.progress_ms || 0)
       });
     };
+
+    // if (this.props.room.host.spotify_id)
   }
 
   componentDidUpdate(props) {
@@ -67,7 +70,8 @@ class Room extends Component {
             currentTrack={this.props.currentTrack}
             percentage={percentage}
             room={this.props.room}
-            closeRoom={this.closeRoom} />
+            closeRoom={this.closeRoom}
+            isHost={this.state.isHost} />
           <Button onClick={(event) => { this.refresh() }} variant="outline-success">Refresh</Button>
         </>
       )
