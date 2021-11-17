@@ -68,6 +68,7 @@ class Room extends Component {
       currentPosition: 0
     })
     this.props.fetchPlayingTrack(this.props.room.hostToken);
+
   }
 
   render() {
@@ -107,7 +108,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchPlayingTrack: (hostToken) => dispatch(fetchPlayingTrack(hostToken)),
     deleteRoom: (roomKey) => dispatch(deleteRoom(roomKey)),
-    exitRoom: (roomKey) => dispatch(exitRoom(roomKey))
+    exitRoom: (roomKey) => dispatch(exitRoom(roomKey)),
+
   };
 };
 

@@ -1,4 +1,6 @@
-export const fetchPlayingTrack = (hostToken) => {
+export const fetchPlayingTrack = (hostToken, isHost) => {
+  // Going to use this action for both pulling and syncing
+  let track;
 
   return (dispatch) => {
     dispatch({ type: "LOADING_CURRENT_TRACK" });
@@ -14,7 +16,7 @@ export const fetchPlayingTrack = (hostToken) => {
       })
       .then((json) => {
         console.log(json)
-        let track = {
+        track = {
           artists: json.item.artists,
           album: {
             image: json.item.album.images[0].url,
@@ -25,10 +27,19 @@ export const fetchPlayingTrack = (hostToken) => {
           duration_ms: json.item.duration_ms,
           progress_ms: json.progress_ms
         }
-        dispatch({ type: "LOAD_CURRENT_TRACK_SUCCESS", track: track })
+        dispatch({ type: "LOAD_CURRENT_TRACK_SUCCESS", track: track });
+        dispatch({ type: "SYNC_BEGIN", track: track });
+
+        //Sync track after track has been obtainedW
+        // syncTrack();
+
       })
       .catch((error) => {
         dispatch({ type: "NO_TRACK" })
-      })
+      });
   }
 }
+
+// const syncTrack () {
+//   return "2"
+// }
