@@ -20,6 +20,7 @@ ReactDOM.render(
         <Route path="/" element={<App />} />
         <Route path="/callback" element={<App />} />
         <Route path="/about" element={<About />} />
+        <Route path="/instructions" element={<Instructions />} />
       </Routes>
     </Router>
   </Provider>,
