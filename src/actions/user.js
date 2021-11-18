@@ -12,6 +12,7 @@ export const fetchUser = (token) => {
       return response.json();
     })
     .then((json) => {
+      console.log(json)
       user = {
         display_name: json.display_name,
         spotify_id: json.id
@@ -30,7 +31,11 @@ export const fetchUser = (token) => {
       })
 
       //Store in Local Storage for later use
+      let dt = new Date();
+      dt.setHours(dt.getHours() + 1);
+
       localStorage.setItem("spotifyUser", json.id);
+      localStorage.setItem("spotifyAuthToken", token)
 
     });
 }

@@ -34,8 +34,8 @@ code {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
-  background-color: rgb(44, 44, 44)
+  top: 30%;
+  position: relative;
 }
 
 .logo {
@@ -111,5 +111,13 @@ header {
   position: absolute;
   top: 2px;
   left: 273px;
-  
+}
+
+
+.btn-success {
+  font-size: 10pt;
+  width: 200pt;
+  align-self: center;
+  background: #2ebd59;
+  border-color: #2ebd59;
 }

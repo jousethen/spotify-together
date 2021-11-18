@@ -8,8 +8,8 @@ import Image from 'react-bootstrap/Image'
 import { fetchUser } from './actions/user'
 import RoomsContainer from './containers/RoomsContainer';
 import Header from './components/Header';
-import Cookies from 'js-cookie';
 import { Outlet } from 'react-router';
+import { Button } from 'react-bootstrap'
 
 class App extends Component {
 
@@ -53,7 +53,7 @@ class App extends Component {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
 
-    console.log(Boolean(this.state.time < this.state.tokenExp), localStorage.getItem("spotifyAuthToken"), this.state.time, this.state.tokenExp)
+    // console.log(Boolean(this.state.time < this.state.tokenExp), localStorage.getItem("spotifyAuthToken"), this.state.time, this.state.tokenExp)
 
     return (
       < div className="App" >
@@ -67,21 +67,15 @@ class App extends Component {
           </>
           :
           <div className="Login">
-            <Image src="./images/spotify-2-logo-png-transparent.png" roundedCircle width={100} />
-            <br />
-            <br />
-            <SpotifyAuth
-              title="Continue With Spotify"
-              redirectUri={redirectUri}
-              noLogo={true}
-              clientID={client_id}
-              scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
-              onAccessToken={(token) => {
-                this.create_or_find_user(token);
-                localStorage.setItem("spotifyAuthToken", token)
-              }
-              }
-            />
+            <style type="text/css">{`.btn-Success {
+                font-size: 15pt;
+                width: 200pt;
+                align-self: center;
+                background: #2ebd59;
+                border-color: #2ebd59;
+              }`}
+            </style>
+            <Button variant="Success">Continue w/ Spotify</Button>
           </div>
         }
       </div >
