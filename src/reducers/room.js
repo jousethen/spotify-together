@@ -1,5 +1,5 @@
-
 export const roomReducer = (state = { room: "", loading: false }, action) => {
+  console.log(action)
   switch (action.type) {
     case "CREATE_ROOM_START":
       return {

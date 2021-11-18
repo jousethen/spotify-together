@@ -1,5 +1,4 @@
 export const createRoom = (hostToken) => {
-  console.log(hostToken)
   return (dispatch) => {
     // Kick of dispatch to start room creation
     dispatch({ type: "CREATE_ROOM_START" });
@@ -112,7 +111,6 @@ export const findRoom = (roomKey) => {
 
 export const exitRoom = (roomKey) => {
   return (dispatch) => {
-
     dispatch({ type: "EXIT_ROOM" });
 
   };

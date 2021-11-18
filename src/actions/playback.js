@@ -1,7 +1,6 @@
 export const fetchPlayingTrack = (hostToken, isHost) => {
   // Going to use this action for both pulling and syncing
   let track;
-  console.log(hostToken)
 
   return (dispatch) => {
     dispatch({ type: "LOADING_CURRENT_TRACK" });
@@ -30,7 +29,7 @@ export const fetchPlayingTrack = (hostToken, isHost) => {
         }
         dispatch({ type: "LOAD_CURRENT_TRACK_SUCCESS", track: track });
         dispatch({ type: "SYNC_BEGIN", track: track });
-
+        console.log(isHost)
         //Sync track after track has been obtained
         if (isHost === false) {
           syncTrack(

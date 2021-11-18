@@ -106,7 +106,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPlayingTrack: (hostToken) => dispatch(fetchPlayingTrack(hostToken)),
+    fetchPlayingTrack: (hostToken, isHost) => dispatch(fetchPlayingTrack(hostToken, isHost)),
     deleteRoom: (roomKey) => dispatch(deleteRoom(roomKey)),
     exitRoom: (roomKey) => dispatch(exitRoom(roomKey)),
 
