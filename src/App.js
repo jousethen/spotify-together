@@ -17,12 +17,22 @@ class App extends Component {
     super();
     this.state = {
       time: 0,
+      tokenExp: Date.now() + 10000,
     }
   }
 
   create_or_find_user = (token) => {
     //Retrieve User Information from Spotify
     fetchUser(token);
+
+    //Store token expiration
+    let dt = new Date();
+    dt.setHours(dt.getHours() + 1);
+
+    this.setState({
+      tokenExp: dt.getTime(),
+
+    })
   }
 
   componentDidMount() {
@@ -34,24 +44,16 @@ class App extends Component {
   }
 
   logout = (event) => {
-    console.log(Cookies.get("spotifyAuthToken"))
-    Cookies.remove("spotifyAuthToken");
+    localStorage.removeItem("spotifyAuthToken");
     localStorage.removeItem("spotifyUser");
-    localStorage.removeItem("tokenExp");
 
-    window.location.href = process.env.REACT_APP_HOST;
   }
 
   render() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
-    let date = new Date(this.state.time)
-    let exp = new Date(this.state.time + 100000)
 
-    //Check if there is a token
-    if (localStorage.getItem("tokenExp")) {
-      exp = new Date(localStorage.getItem("tokenExp"))
-    }
+    console.log(Boolean(this.state.time < this.state.tokenExp), localStorage.getItem("spotifyAuthToken"), this.state.time, this.state.tokenExp)
 
     return (
       < div className="App" >
@@ -59,10 +61,9 @@ class App extends Component {
         <Header logout={this.logout} />
         <Outlet />
 
-        {Boolean(date < exp) && Boolean(Cookies.get("spotifyAuthToken")) ? //Check to see if the user is logged in and token is valid
+        {Boolean(this.state.time < this.state.tokenExp) && Boolean(localStorage.getItem("spotifyAuthToken")) ? //Check to see if the user is logged in and token is valid
           <>
             <RoomsContainer />
-
           </>
           :
           <div className="Login">
@@ -75,7 +76,10 @@ class App extends Component {
               noLogo={true}
               clientID={client_id}
               scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
-              onAccessToken={(token) => { this.create_or_find_user(token); }
+              onAccessToken={(token) => {
+                this.create_or_find_user(token);
+                localStorage.setItem("spotifyAuthToken", token)
+              }
               }
             />
           </div>

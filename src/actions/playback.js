@@ -33,7 +33,7 @@ export const fetchPlayingTrack = (hostToken, isHost) => {
 
         //Sync track after track has been obtainedW
         syncTrack(
-          Cookie.get("spotifyAuthToken"),
+          localStorage.getItem("spotifyAuthToken"),
           json.item.album.uri,
           json.item.track_number,
           json.progress_ms
