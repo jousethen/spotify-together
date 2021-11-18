@@ -1,19 +1,18 @@
 
 import React from 'react';
-import { Image, CloseButton, Navbar, Container, NavDropdown, Nav } from 'react-bootstrap';
+import { Image, CloseButton, Navbar, Container, Nav } from 'react-bootstrap';
 
 const Header = (props) =>
   <header>
-    <Navbar bg="black" variant="dark" expand="sm">
-      <Container>
-        <Navbar.Brand href="/"><Image className="logo" src="./images/spotify-2-logo-png-transparent.png" roundedCircle />Spotify Together</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="/about">About</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+    <Navbar bg="black" variant="dark" expand="true">
+      <Navbar.Brand href="/"><Image className="logo" src="./images/spotify-2-logo-png-transparent.png" roundedCircle />  Spotify Together</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav >
+          <Nav.Link href="/about">About</Nav.Link>
+          <Nav.Link href="/instructions">Instructions</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
 
 

@@ -39,7 +39,7 @@ code {
 
 .logo {
   position: relative;
-  width: 50px;
+  width: 30px;
 
 }
 
@@ -60,7 +60,7 @@ header {
 .title {
   padding: 15px;
   text-align: right;
-  top: 20 px;
+  top: 20px;
   color: black;
   margin-right: 20px;
   font-size: 9pt;
