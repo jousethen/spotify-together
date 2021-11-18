@@ -12,7 +12,6 @@ export const fetchUser = (token) => {
       return response.json();
     })
     .then((json) => {
-      console.log(json)
       user = {
         display_name: json.display_name,
         spotify_id: json.id
@@ -36,6 +35,7 @@ export const fetchUser = (token) => {
 
       localStorage.setItem("spotifyUser", json.id);
       localStorage.setItem("spotifyAuthToken", token)
+      window.location.replace(`${process.env.REACT_APP_HOST}`);
 
     });
 }

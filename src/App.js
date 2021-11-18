@@ -4,12 +4,10 @@ import 'react-spotify-auth/dist/index.css';
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Image from 'react-bootstrap/Image'
 import { fetchUser } from './actions/user'
 import RoomsContainer from './containers/RoomsContainer';
 import Header from './components/Header';
-import { Outlet } from 'react-router';
-import { Button } from 'react-bootstrap'
+import { Outlet, Navigate } from 'react-router';
 
 class App extends Component {
 
@@ -18,6 +16,7 @@ class App extends Component {
     this.state = {
       time: 0,
       tokenExp: Date.now() + 10000,
+      redirect: false
     }
   }
 
@@ -31,8 +30,11 @@ class App extends Component {
 
     this.setState({
       tokenExp: dt.getTime(),
-
+      redirect: true
     })
+
+
+
   }
 
   componentDidMount() {
@@ -57,7 +59,7 @@ class App extends Component {
 
     return (
       < div className="App" >
-
+        {this.state.redirect}
         <Header logout={this.logout} />
         <Outlet />
 
@@ -67,15 +69,21 @@ class App extends Component {
           </>
           :
           <div className="Login">
-            <style type="text/css">{`.btn-Success {
-                font-size: 15pt;
-                width: 200pt;
-                align-self: center;
-                background: #2ebd59;
-                border-color: #2ebd59;
-              }`}
-            </style>
-            <Button variant="Success">Continue w/ Spotify</Button>
+            <br />
+            <br />
+            <SpotifyAuth
+              title="Continue With Spotify"
+              redirectUri={redirectUri}
+              noLogo={true}
+              localStorage
+              noCookie={true}
+              clientID={client_id}
+              scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
+              onAccessToken={(token) => {
+                this.create_or_find_user(token);
+              }
+              }
+            />
           </div>
         }
       </div >

@@ -13,7 +13,7 @@ class RoomsContainer extends Component {
   }
 
   handleOnCreateButton = event => {
-    this.props.createRoom(Cookies.get("spotifyAuthToken"));
+    this.props.createRoom(localStorage.getItem("spotifyAuthToken"));
   }
 
   onHandleSubmit = (event) => {

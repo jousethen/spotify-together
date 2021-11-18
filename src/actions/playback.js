@@ -1,6 +1,7 @@
 export const fetchPlayingTrack = (hostToken, isHost) => {
   // Going to use this action for both pulling and syncing
   let track;
+  console.log(hostToken)
 
   return (dispatch) => {
     dispatch({ type: "LOADING_CURRENT_TRACK" });
