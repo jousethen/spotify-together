@@ -1,4 +1,3 @@
-import Cookie from "js-cookie"
 export const fetchPlayingTrack = (hostToken, isHost) => {
   // Going to use this action for both pulling and syncing
   let track;
@@ -31,13 +30,15 @@ export const fetchPlayingTrack = (hostToken, isHost) => {
         dispatch({ type: "LOAD_CURRENT_TRACK_SUCCESS", track: track });
         dispatch({ type: "SYNC_BEGIN", track: track });
 
-        //Sync track after track has been obtainedW
-        syncTrack(
-          localStorage.getItem("spotifyAuthToken"),
-          json.item.album.uri,
-          json.item.track_number,
-          json.progress_ms
-        );
+        //Sync track after track has been obtained
+        if (isHost === false) {
+          syncTrack(
+            localStorage.getItem("spotifyAuthToken"),
+            json.item.album.uri,
+            json.item.track_number,
+            json.progress_ms
+          );
+        }
 
       })
       .catch((error) => {

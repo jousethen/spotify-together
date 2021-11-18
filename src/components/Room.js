@@ -31,7 +31,7 @@ class Room extends Component {
         currentPosition: 0,
         currentTrack: {},
       });
-      this.props.fetchPlayingTrack(this.props.room.hostToken);
+      this.props.fetchPlayingTrack(this.props.room.hostToken, this.state.isHost);
     }
   }
 
@@ -47,7 +47,7 @@ class Room extends Component {
     }
 
     //Fetch Host's playing song
-    this.props.fetchPlayingTrack(this.props.room.hostToken);
+    this.props.fetchPlayingTrack(this.props.room.hostToken, this.state.isHost);
   }
 
   componentWillUnmount() {
@@ -67,7 +67,7 @@ class Room extends Component {
       start: Date.now(),
       currentPosition: 0
     })
-    this.props.fetchPlayingTrack(this.props.room.hostToken);
+    this.props.fetchPlayingTrack(this.props.room.hostToken, this.state.isHost);
 
   }
 
@@ -84,13 +84,13 @@ class Room extends Component {
             room={this.props.room}
             closeRoom={this.closeRoom}
             isHost={this.state.isHost} />
-          <Button onClick={(event) => { this.refresh() }} variant="outline-success">Refresh</Button>
+          <Button onClick={(event) => { this.refresh() }} variant="outline-success">Sync</Button>
         </>
       )
 
     }
     else {
-      return <Button onClick={(event) => { this.refresh() }} variant="outline-success">Refresh</Button>
+      return <Button onClick={(event) => { this.refresh() }} variant="outline-success">Sync</Button>
     }
 
 
