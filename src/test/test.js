@@ -1,6 +1,5 @@
 import React from 'react';
-import Cookies from 'js-cookie';
-import { SpotifyAuth, Scopes } from 'react-spotify-auth'
+
 import 'react-spotify-auth/dist/index.css';
 
 const Test = props => {
@@ -8,7 +7,7 @@ const Test = props => {
   const client_id = process.env.REACT_APP_CLIENT_ID;
   const client_secret = process.env.REACT_APP_CLIENT_SECRET;
 
-  const redirectUri = process.env.REACT_APP_REDIRECTURI;
+  //const redirectUri = process.env.REACT_APP_REDIRECTURI;
   // const [token, setToken] = React.useState(Cookies.get("spotifyAuthToken"))
 
   // fetch('https://api.spotify.com/v1/me/player/play', {

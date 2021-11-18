@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { fetchUser } from './actions/user'
 import RoomsContainer from './containers/RoomsContainer';
 import Header from './components/Header';
-import { Outlet, Navigate } from 'react-router';
+import { Outlet } from 'react-router';
 
 class App extends Component {
 
@@ -16,7 +16,6 @@ class App extends Component {
     this.state = {
       time: 0,
       tokenExp: Date.now() + 10000,
-      redirect: false
     }
   }
 
@@ -27,14 +26,10 @@ class App extends Component {
     //Store token expiration
     let dt = new Date();
     dt.setHours(dt.getHours() + 1);
-
+    console.log(dt)
     this.setState({
-      tokenExp: dt.getTime(),
-      redirect: true
+      tokenExp: dt.getTime()
     })
-
-
-
   }
 
   componentDidMount() {
@@ -55,7 +50,9 @@ class App extends Component {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
 
-    // console.log(Boolean(this.state.time < this.state.tokenExp), localStorage.getItem("spotifyAuthToken"), this.state.time, this.state.tokenExp)
+    let time = new Date(this.state.time)
+    let exp = new Date(this.state.tokenExp)
+    //console.log(Boolean(this.state.time < this.state.tokenExp), localStorage.getItem("spotifyAuthToken"), time, exp)
 
     return (
       < div className="App" >
@@ -75,9 +72,9 @@ class App extends Component {
               title="Continue With Spotify"
               redirectUri={redirectUri}
               noLogo={true}
-              localStorage
               noCookie={true}
               clientID={client_id}
+              className="center"
               scopes={[Scopes.userReadPrivate, 'user-read-email', 'user-read-playback-state', 'user-modify-playback-state']} // either style will work
               onAccessToken={(token) => {
                 this.create_or_find_user(token);

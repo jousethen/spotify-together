@@ -8,6 +8,7 @@ import thunk from "redux-thunk";
 import reducers from "./reducers/index"
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Test from './test/test';
+import About from './components/About';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/callback" element={<App />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   </Provider>,

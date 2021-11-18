@@ -17,6 +17,8 @@ export const fetchUser = (token) => {
         spotify_id: json.id
       }
 
+      localStorage.setItem("spotifyUser", json.id);
+      localStorage.setItem("spotifyAuthToken", token)
 
       // Make POST to Backend to create or find user based on email
       fetch(`${process.env.REACT_APP_API_HOST}/api/users/new`, {
@@ -28,14 +30,6 @@ export const fetchUser = (token) => {
           user: user
         })
       })
-
-      //Store in Local Storage for later use
-      let dt = new Date();
-      dt.setHours(dt.getHours() + 1);
-
-      localStorage.setItem("spotifyUser", json.id);
-      localStorage.setItem("spotifyAuthToken", token)
-      window.location.replace(`${process.env.REACT_APP_HOST}`);
 
     });
 }
