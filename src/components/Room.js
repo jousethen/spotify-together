@@ -31,6 +31,8 @@ class Room extends Component {
         currentPosition: 0,
         currentTrack: {},
       });
+
+      this.props.findRoom(this.props.room.roomKey);
       this.props.fetchPlayingTrack(this.props.room.hostToken, this.state.isHost);
     }
   }
@@ -59,6 +61,7 @@ class Room extends Component {
   }
 
   exitRoom = () => {
+    console.log("EXIT ROOM")
     this.props.exitRoom(this.props.room.roomKey)
   }
 
@@ -67,6 +70,9 @@ class Room extends Component {
       start: Date.now(),
       currentPosition: 0
     })
+
+    console.log("REFRESH")
+    this.props.findRoom(this.props.room.roomKey);
     this.props.fetchPlayingTrack(this.props.room.hostToken, this.state.isHost);
 
   }
@@ -83,7 +89,8 @@ class Room extends Component {
             percentage={percentage}
             room={this.props.room}
             closeRoom={this.closeRoom}
-            isHost={this.state.isHost} />
+            isHost={this.state.isHost}
+            exitRoom={this.props.exitRoom} />
           <Button onClick={(event) => { this.refresh() }} variant="outline-success">Sync</Button>
         </>
       )

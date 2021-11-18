@@ -28,10 +28,10 @@ export const fetchPlayingTrack = (hostToken, isHost) => {
           progress_ms: json.progress_ms
         }
         dispatch({ type: "LOAD_CURRENT_TRACK_SUCCESS", track: track });
-        dispatch({ type: "SYNC_BEGIN", track: track });
-        console.log(isHost)
+
         //Sync track after track has been obtained
         if (isHost === false) {
+          dispatch({ type: "SYNC_BEGIN", track: track });
           syncTrack(
             localStorage.getItem("spotifyAuthToken"),
             json.item.album.uri,

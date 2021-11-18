@@ -91,7 +91,6 @@ export const findRoom = (roomKey) => {
 
       .then((json) => {
         //Complete Dispatch of room creation
-        console.log(json)
         dispatch({
           type: "ROOM_FOUND",
           room: {
