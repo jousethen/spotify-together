@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { Image, CloseButton, Navbar, Container, Nav } from 'react-bootstrap';
+import { Image, CloseButton, Navbar, Nav } from 'react-bootstrap';
 
 const Header = (props) =>
   <header>
     <Navbar bg="black" variant="dark" expand="true">
-      <Navbar.Brand href="/"><Image className="logo" src="./images/spotify-2-logo-png-transparent.png" roundedCircle />  Spotify Together</Navbar.Brand>
+      <Navbar.Brand href="/"><Image className="logo" src="./images/Spotify_Logo_RGB_Green.png" /></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav >

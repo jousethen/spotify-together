@@ -49,9 +49,6 @@ class App extends Component {
   render() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     const redirectUri = process.env.REACT_APP_REDIRECTURI;
-
-    let time = new Date(this.state.time)
-    let exp = new Date(this.state.tokenExp)
     //console.log(Boolean(this.state.time < this.state.tokenExp), localStorage.getItem("spotifyAuthToken"), time, exp)
 
     return (

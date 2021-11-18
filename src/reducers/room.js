@@ -5,6 +5,7 @@ export const roomReducer = (state = { room: "", loading: false }, action) => {
         ...state,
         room: state.room,
         loading: true,
+        error: false,
       };
     case "CREATE_ROOM":
       return {
@@ -30,6 +31,7 @@ export const roomReducer = (state = { room: "", loading: false }, action) => {
         ...state,
         room: null,
         loading: true,
+        error: false
       }
 
     case "ROOM_FOUND":

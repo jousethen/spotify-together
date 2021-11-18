@@ -99,8 +99,6 @@ class Room extends Component {
     else {
       return <Button onClick={(event) => { this.refresh() }} variant="outline-success">Sync</Button>
     }
-
-
   }
 }
 

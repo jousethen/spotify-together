@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Button, ButtonGroup, InputGroup, FormControl, Alert } from "react-bootstrap"
-import { createRoom, findRoom } from "../actions/rooms"
-import Cookies from "js-cookie";
+import { Button, ButtonGroup, InputGroup, FormControl, Alert } from "react-bootstrap";
+import { createRoom, findRoom } from "../actions/rooms";
 import Room from '../components/Room';
 class RoomsContainer extends Component {
   constructor() {
@@ -32,7 +31,7 @@ class RoomsContainer extends Component {
     return (
       <div className="room_container">
         {this.props.room ?
-          <Room room={this.props.room} findRoom={this.props.findRoom} /> :
+          < Room room={this.props.room} findRoom={this.props.findRoom} /> :
           <ButtonGroup vertical className="center" >
             <Button onClick={() => { this.handleOnCreateButton() }} variant="outline-light">Create Room</Button>
             <br />
