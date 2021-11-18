@@ -117,6 +117,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteRoom: (roomKey) => dispatch(deleteRoom(roomKey)),
     exitRoom: (roomKey) => dispatch(exitRoom(roomKey)),
 
+
   };
 };
 
