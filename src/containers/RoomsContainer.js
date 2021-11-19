@@ -37,7 +37,7 @@ class RoomsContainer extends Component {
             <br />
             <form onSubmit={(event) => { this.onHandleSubmit(event) }}>
               <InputGroup className="mb-3">
-                <InputGroup.Text id="basic-addon1">Join Room</InputGroup.Text>
+                <InputGroup.Text id="basic-addon1"></InputGroup.Text>
                 <FormControl
                   placeholder="Room Key"
                   aria-label="Room Key"

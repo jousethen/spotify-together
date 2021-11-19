@@ -21,11 +21,11 @@ code {
   width: 300px;
   height: 490px;
   background-color: rgb(0, 0, 0);
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 .room_container {
-  width: 283px;
+  width: 300px;
   height: 423px;
 
   background-color: rgb(40, 40, 40)
@@ -109,7 +109,7 @@ header {
 #close {
   position: absolute;
   top: 69px;
-  left: 255px;
+  left: 260px;
 }
 
 p, li {
