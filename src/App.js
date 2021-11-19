@@ -46,6 +46,7 @@ class App extends Component {
   logout = (event) => {
     localStorage.removeItem("spotifyAuthToken");
     localStorage.removeItem("spotifyUser");
+    window.location.replace(`${process.env.REACT_APP_HOST}`);
   }
 
   render() {
