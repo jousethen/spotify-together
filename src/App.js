@@ -19,6 +19,10 @@ class App extends Component {
   }
 
   create_or_find_user = (token) => {
+    //Clear Previous Cookies
+    localStorage.removeItem("spotifyAuthToken");
+    localStorage.removeItem("spotifyUser");
+
     //Retrieve User Information from Spotify
     fetchUser(token);
 
@@ -42,7 +46,6 @@ class App extends Component {
   logout = (event) => {
     localStorage.removeItem("spotifyAuthToken");
     localStorage.removeItem("spotifyUser");
-
   }
 
   render() {
