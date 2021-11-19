@@ -7,7 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { fetchUser } from './actions/user'
 import RoomsContainer from './containers/RoomsContainer';
 import Header from './components/Header';
-import { Outlet } from 'react-router';
 
 class App extends Component {
 
@@ -53,9 +52,7 @@ class App extends Component {
 
     return (
       < div className="App" >
-        {this.state.redirect}
         <Header logout={this.logout} />
-        <Outlet />
 
         {Boolean(this.state.time < this.state.tokenExp) && Boolean(localStorage.getItem("spotifyAuthToken")) ? //Check to see if the user is logged in and token is valid
           <>
