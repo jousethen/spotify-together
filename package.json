@@ -28,9 +28,11 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "build": "yarn --cwd spotify-together install && yarn --cwd spotify-together build",
-    "deploy": "cp -a spotify-together/build/. public/",
-    "heroku-postbuild": "yarn build && yarn deploy"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm build && npm deploy"
   },
   "eslintConfig": {
     "extends": [
