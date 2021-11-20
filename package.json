@@ -28,7 +28,6 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "yarn --cwd spotify-together install && yarn --cwd spotify-together build",
     "deploy": "cp -a spotify-together/build/. public/",
     "heroku-postbuild": "yarn build && yarn deploy"
