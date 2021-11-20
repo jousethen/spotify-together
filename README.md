@@ -68,3 +68,19 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Rails Backend
+In order to get the backend working (server folder) in your dev environment, you must navigate to the folder and run `rails s -p 8000`. Note, it must be on a different port than your frontend. 
+
+### Spotify Requirements
+You will need to register your own Spotify app and set the credentials in a couple of config files. For that:
+
+Create an application on Spotify's Developer Site.
+
+Add as redirect uris both http://localhost:3000/callback (for development) and <production_domain>/callback (if you want to deploy your app somewhere).
+
+Create a .env file in the root of the project with the following variables;
+- REACT_APP_HOST
+- REACT_APP_CLIENT_ID
+- REACT_APP_CLIENT_SECRET
