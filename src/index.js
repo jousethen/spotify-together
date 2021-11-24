@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 //import Test from './test/test';
 import About from './components/About';
 import Instructions from './components/Instructions';
+import LiveCodingComponent from './components/LiveCodingComponent';
 
 const store = createStore(reducers, applyMiddleware(thunk));
 

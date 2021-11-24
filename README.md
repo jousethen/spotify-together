@@ -71,7 +71,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 ### Rails Backend
-In order to get the backend working (server folder) in your dev environment, you must navigate to the folder and run `rails s -p 8000`. Note, it must be on a different port than your frontend. 
+In order to get the backend working (server folder) in your dev environment, you must navigate to the folder and run `rails s -p 3001`. Note, it must be on a different port than your frontend. 
 
 ### Spotify Requirements
 You will need to register your own Spotify app and set the credentials in a couple of config files. For that:
